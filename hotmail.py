@@ -91,12 +91,10 @@ def proxy():
 
 
     if options.hotmail == None :
-        if options.twitter == None:
-            if options.facebook == None:
-                if options.netflix == None :
+        
                     print(use.usage)
                     exit()       
-    elif options.hotmail != None or options.gmail == None:
+    elif options.hotmail != None or options.hotmail == None:
         smtp_srverH= smtplib.SMTP('smtp.live.com', 587)
         smtp_srverH.ehlo()
         smtp_srverH.starttls()

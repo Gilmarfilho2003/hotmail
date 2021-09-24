@@ -48,10 +48,6 @@ _____________________                              _____________________
 {}
 -----------------------------------------------------------------------
 -g --gmail                              ACCOUNT gmail @gmail.com
--t --hotmail                            ACCOUNT hotmail @hotmail.com
--T --twitter                            ACCOUNT  twitter @
--f --facebook                           ACCOUNT  facebook @
--n --netflix                            Account  Netflix @
 -l --list                               List    Password BrutoForce
 -p --password                           Single  Password
 -X --proxy                              Proxy list

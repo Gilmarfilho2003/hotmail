@@ -94,6 +94,8 @@ def proxy():
         return proxy()
 
 
+                    print(use.usage)
+                    exit()       
                
         smtp_srverH= smtplib.SMTP('smtp.live.com', 587)
         smtp_srverH.ehlo()

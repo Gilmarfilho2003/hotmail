@@ -95,7 +95,7 @@ def proxy():
         checkProxyIP = brows.open("https://api.ipify.org/?format=raw", timeout=10)
     except:
         return proxy()
-    elif options.hotmail != None 
+    elif options.hotmail != true
         smtp_srverH= smtplib.SMTP('smtp.live.com', 587)
         smtp_srverH.ehlo()
         smtp_srverH.starttls()

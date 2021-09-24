@@ -90,7 +90,6 @@ def proxy():
         return proxy()
 
 
-if options.gmail == None  :
     if options.hotmail == None :
         if options.twitter == None:
             if options.facebook == None:

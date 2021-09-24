@@ -94,7 +94,6 @@ def proxy():
     try:
         checkProxyIP = brows.open("https://api.ipify.org/?format=raw", timeout=10)
     except:
-  return proxy()
 
     if options.hotmail == None :
                     exit()       

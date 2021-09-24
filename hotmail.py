@@ -94,11 +94,8 @@ def proxy():
         return proxy()
 
 
-        
-if options.hotmail == None :    
-        
-                    print(use.usage)
-                    exit()       
+               
+                
 			
     elif options.hotmail != None 
         smtp_srverH= smtplib.SMTP('smtp.live.com', 587)

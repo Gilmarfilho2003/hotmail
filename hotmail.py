@@ -119,6 +119,5 @@ def proxy():
                 except smtplib.SMTPAuthenticationError:
                     print("Not Found Password : {} \t Email Hotmail:{}".format(password,options.hotmail))
    
-    print(use.usage)
-    exit()  
+ 
 ############################################################THE END####################################################################

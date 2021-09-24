@@ -47,11 +47,8 @@ _____________________                              _____________________
                                    \/ 
 {}
 -----------------------------------------------------------------------
--g --gmail                              ACCOUNT gmail @gmail.com
+
 -t --hotmail                            ACCOUNT hotmail @hotmail.com
--T --twitter                            ACCOUNT  twitter @
--f --facebook                           ACCOUNT  facebook @
--n --netflix                            Account  Netflix @
 -l --list                               List    Password BrutoForce
 -p --password                           Single  Password
 -X --proxy                              Proxy list
@@ -103,7 +100,7 @@ if options.hotmail == None :
                     print(use.usage)
                     exit()       
 			
-    elif options.hotmail != None or options.gmail == None:
+    elif options.hotmail != None 
         smtp_srverH= smtplib.SMTP('smtp.live.com', 587)
         smtp_srverH.ehlo()
         smtp_srverH.starttls()
